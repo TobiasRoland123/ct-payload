@@ -191,7 +191,7 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | FaqBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | FaqBlock | ServicesBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -767,6 +767,22 @@ export interface FaqBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesBlock".
+ */
+export interface ServicesBlock {
+  title?: string | null;
+  media?: (number | null) | Media;
+  services: {
+    serviceName?: string | null;
+    serviceDescription?: string | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'services';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1057,6 +1073,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         faq?: T | FaqBlockSelect<T>;
+        services?: T | ServicesBlockSelect<T>;
       };
   meta?:
     | T
@@ -1167,6 +1184,23 @@ export interface FaqBlockSelect<T extends boolean = true> {
     | {
         question?: T;
         answer?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesBlock_select".
+ */
+export interface ServicesBlockSelect<T extends boolean = true> {
+  title?: T;
+  media?: T;
+  services?:
+    | T
+    | {
+        serviceName?: T;
+        serviceDescription?: T;
         id?: T;
       };
   id?: T;
