@@ -191,7 +191,16 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | FaqBlock | ServicesBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | FaqBlock
+    | ServicesBlock
+    | SellingPointBannerBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -772,7 +781,7 @@ export interface FaqBlock {
 export interface ServicesBlock {
   title?: string | null;
   services: {
-    serviceIcon?: ('🛠️' | '🛢️' | '🚘' | '🔋' | '📅') | null;
+    serviceIcon: '🛠️' | '🛢️' | '🚘' | '🔋' | '📅';
     serviceName?: string | null;
     serviceDescription?: string | null;
     id?: string | null;
@@ -780,6 +789,56 @@ export interface ServicesBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'services';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SellingPointBannerBlock".
+ */
+export interface SellingPointBannerBlock {
+  title: string;
+  sellingpoints?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  media: number | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'sellingpointbanner';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1074,6 +1133,7 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         faq?: T | FaqBlockSelect<T>;
         services?: T | ServicesBlockSelect<T>;
+        sellingpointbanner?: T | SellingPointBannerBlockSelect<T>;
       };
   meta?:
     | T
@@ -1203,6 +1263,32 @@ export interface ServicesBlockSelect<T extends boolean = true> {
         serviceDescription?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SellingPointBannerBlock_select".
+ */
+export interface SellingPointBannerBlockSelect<T extends boolean = true> {
+  title?: T;
+  sellingpoints?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  media?: T;
   id?: T;
   blockName?: T;
 }

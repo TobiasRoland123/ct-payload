@@ -9,6 +9,7 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { FaqBlock } from '@/blocks/Faq/component'
 import { ServicesBlock } from '@/blocks/Services/Component'
+import { SellingPointBannerBlock } from '@/blocks/SellingPointBanner/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -18,6 +19,7 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   faq: FaqBlock,
   services: ServicesBlock,
+  sellingpointbanner: SellingPointBannerBlock,
 }
 
 export const RenderBlocks: React.FC<{
