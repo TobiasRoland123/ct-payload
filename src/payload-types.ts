@@ -771,8 +771,8 @@ export interface FaqBlock {
  */
 export interface ServicesBlock {
   title?: string | null;
-  media?: (number | null) | Media;
   services: {
+    media?: (number | null) | Media;
     serviceName?: string | null;
     serviceDescription?: string | null;
     id?: string | null;
@@ -1195,10 +1195,10 @@ export interface FaqBlockSelect<T extends boolean = true> {
  */
 export interface ServicesBlockSelect<T extends boolean = true> {
   title?: T;
-  media?: T;
   services?:
     | T
     | {
+        media?: T;
         serviceName?: T;
         serviceDescription?: T;
         id?: T;

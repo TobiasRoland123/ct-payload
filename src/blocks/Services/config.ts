@@ -9,13 +9,14 @@ export const Services: Block = {
       name: 'title',
       label: 'Title',
     },
-    { name: 'media', type: 'upload', relationTo: 'media' },
+
     {
       type: 'array',
       name: 'services',
       label: 'Services',
       minRows: 1,
       fields: [
+        { name: 'media', type: 'upload', relationTo: 'media' },
         { type: 'text', name: 'serviceName', label: 'Service Name' },
         { type: 'text', name: 'serviceDescription', label: 'Service Description' },
       ],
