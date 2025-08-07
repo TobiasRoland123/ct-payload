@@ -10,6 +10,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { FaqBlock } from '@/blocks/Faq/component'
 import { ServicesBlock } from '@/blocks/Services/Component'
 import { SellingPointBannerBlock } from '@/blocks/SellingPointBanner/Component'
+import { SideBySideBlock } from '@/blocks/SideBySide/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -20,6 +21,7 @@ const blockComponents = {
   faq: FaqBlock,
   services: ServicesBlock,
   sellingpointbanner: SellingPointBannerBlock,
+  sidebyside: SideBySideBlock,
 }
 
 export const RenderBlocks: React.FC<{

@@ -13,7 +13,7 @@ export const SellingPointBannerBlock: React.FC<SellingPointBannerBlockProps> = (
 }) => {
   console.log('links:', links)
   return (
-    <article className={'grid grid-cols-2 gap-8 container'}>
+    <article className={'md:grid grid-cols-2 gap-8 container'}>
       <div className={'relative aspect-auto h-full'}>
         <Media resource={media} imgClassName={'object-cover overflow-hidden'} fill />
       </div>

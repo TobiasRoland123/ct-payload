@@ -23,6 +23,7 @@ import {
 import { Faq } from '@/blocks/Faq/config'
 import { Services } from '@/blocks/Services/config'
 import { SellingPointBanner } from '@/blocks/SellingPointBanner/config'
+import { SideBySide } from '@/blocks/SideBySide/Config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -87,6 +88,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Faq,
                 Services,
                 SellingPointBanner,
+                SideBySide,
               ],
               required: true,
               admin: {
