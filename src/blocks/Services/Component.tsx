@@ -13,16 +13,8 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({ services, title })
             key={`${service.serviceName}-${index}`}
             className="p-10 bg-gray-400 rounded-lg shadow-md flex flex-col justify-between items-center text-center "
           >
-            <div className={'max-w-10 max-h-10'}>
-              {service.media && (
-                <Media
-                  imgClassName="h-full object-cover"
-                  pictureClassName={'w-full h-full block'}
-                  priority
-                  resource={service.media}
-                />
-              )}
-            </div>
+            <span className={'text-5xl'}>{service.serviceIcon}</span>
+
             <h3 className={'text-4xl'}>{service.serviceName}</h3>
             <p className={'pt-4'}>{service.serviceDescription}</p>
           </li>

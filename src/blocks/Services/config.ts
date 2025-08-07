@@ -16,7 +16,18 @@ export const Services: Block = {
       label: 'Services',
       minRows: 1,
       fields: [
-        { name: 'media', type: 'upload', relationTo: 'media' },
+        {
+          type: 'select',
+          name: 'serviceIcon',
+          options: [
+            { label: 'tools', value: '🛠️' },
+            { label: 'oil', value: '🛢️' },
+            { label: 'car', value: '🚘' },
+            { label: 'car', value: '🚘' },
+            { label: 'battery', value: '🔋' },
+            { label: 'calendar', value: '📅' },
+          ],
+        },
         { type: 'text', name: 'serviceName', label: 'Service Name' },
         { type: 'text', name: 'serviceDescription', label: 'Service Description' },
       ],

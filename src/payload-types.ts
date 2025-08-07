@@ -772,7 +772,7 @@ export interface FaqBlock {
 export interface ServicesBlock {
   title?: string | null;
   services: {
-    media?: (number | null) | Media;
+    serviceIcon?: ('🛠️' | '🛢️' | '🚘' | '🔋' | '📅') | null;
     serviceName?: string | null;
     serviceDescription?: string | null;
     id?: string | null;
@@ -1198,7 +1198,7 @@ export interface ServicesBlockSelect<T extends boolean = true> {
   services?:
     | T
     | {
-        media?: T;
+        serviceIcon?: T;
         serviceName?: T;
         serviceDescription?: T;
         id?: T;
