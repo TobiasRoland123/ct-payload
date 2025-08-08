@@ -1,7 +1,57 @@
-import { Block } from 'payload'
-import type { Field } from 'payload'
+import { Block, Field } from 'payload'
 import { linkGroup } from '@/fields/linkGroup'
-import { fields } from '@/blocks/Form/fields'
+import {
+  FixedToolbarFeature,
+  HeadingFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
+
+export const TextSideGroup: Field = {
+  type: 'group',
+  name: 'textside',
+  label: 'TextSideGroup',
+  admin: { condition: (_, siblingData) => siblingData.type === 'textside' },
+  fields: [
+    {
+      type: 'text',
+      name: 'title',
+      label: 'Title',
+      // admin: { condition: (_, siblingData) => siblingData.type === 'textside' },
+    },
+    {
+      type: 'richText',
+      name: 'richText',
+      label: 'Rich Text',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [
+            ...rootFeatures,
+            HeadingFeature({ enabledHeadingSizes: ['h2'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          ]
+        },
+      }),
+      // admin: { condition: (_, siblingData) => siblingData.type === 'textside' },
+    },
+  ],
+}
+
+export const ImageSideGroup: Field = {
+  type: 'group',
+  name: 'imageside',
+  label: 'ImageSideGroup',
+  admin: { condition: (_, siblingData) => siblingData.type === 'imageside' },
+  fields: [
+    {
+      type: 'upload',
+      name: 'media',
+      relationTo: 'media',
+      // admin: { condition: (_, siblingData) => siblingData.type === 'imageside' },
+    },
+  ],
+}
 
 export const SideBySide: Block = {
   slug: 'sidebyside',
@@ -11,11 +61,13 @@ export const SideBySide: Block = {
     {
       type: 'group',
       name: 'leftside',
+
       label: 'LeftSide',
       fields: [
         {
           name: 'type',
           type: 'select',
+          enumName: 'SideBySideType',
           defaultValue: 'textside',
           label: 'Type',
           options: [
@@ -30,31 +82,14 @@ export const SideBySide: Block = {
           ],
           required: true,
         },
-
-        {
-          type: 'text',
-          name: 'title',
-          label: 'Title',
-          admin: { condition: (_, siblingData) => siblingData.type === 'textside' },
-        },
-        {
-          type: 'richText',
-          name: 'richText',
-          label: 'Rich Text',
-          admin: { condition: (_, siblingData) => siblingData.type === 'textside' },
-        },
+        TextSideGroup,
+        ImageSideGroup,
         linkGroup({
           appearances: ['default', 'outline'],
           overrides: {
             maxRows: 1,
           },
         }),
-        {
-          type: 'upload',
-          name: 'media',
-          relationTo: 'media',
-          admin: { condition: (_, siblingData) => siblingData.type === 'imageside' },
-        },
       ],
     },
     {
@@ -86,24 +121,14 @@ export const SideBySide: Block = {
           label: 'Title',
           admin: { condition: (_, siblingData) => siblingData.type === 'textside' },
         },
-        {
-          type: 'richText',
-          name: 'richText',
-          label: 'Rich Text',
-          admin: { condition: (_, siblingData) => siblingData.type === 'textside' },
-        },
+        TextSideGroup,
+        ImageSideGroup,
         linkGroup({
           appearances: ['default', 'outline'],
           overrides: {
             maxRows: 1,
           },
         }),
-        {
-          type: 'upload',
-          name: 'media',
-          relationTo: 'media',
-          admin: { condition: (_, siblingData) => siblingData.type === 'imageside' },
-        },
       ],
     },
   ],

@@ -1,9 +1,7 @@
 import { Media } from '@/components/Media'
 import type { Props as MediaProps } from '@/components/Media/types'
-type mediaProps = {
-  media: MediaProps
-}
+import React from 'react'
 
-export function SideBySideImage(media: mediaProps) {
-  return
+export const SideBySideImage: React.FC<MediaProps> = (props) => {
+  return <Media resource={props.resource} />
 }

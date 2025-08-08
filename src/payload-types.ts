@@ -849,22 +849,27 @@ export interface SideBySideBlock {
   heading: string;
   leftside: {
     type: 'textside' | 'imageside';
-    title?: string | null;
-    richText?: {
-      root: {
-        type: string;
-        children: {
+    textside?: {
+      title?: string | null;
+      richText?: {
+        root: {
           type: string;
+          children: {
+            type: string;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
           version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
+        };
+        [k: string]: unknown;
+      } | null;
+    };
+    imageside?: {
+      media?: (number | null) | Media;
+    };
     links?:
       | {
           link: {
@@ -889,26 +894,31 @@ export interface SideBySideBlock {
           id?: string | null;
         }[]
       | null;
-    media?: (number | null) | Media;
   };
   rightside: {
     type: 'textside' | 'imageside';
     title?: string | null;
-    richText?: {
-      root: {
-        type: string;
-        children: {
+    textside?: {
+      title?: string | null;
+      richText?: {
+        root: {
           type: string;
+          children: {
+            type: string;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
           version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
+        };
+        [k: string]: unknown;
+      } | null;
+    };
+    imageside?: {
+      media?: (number | null) | Media;
+    };
     links?:
       | {
           link: {
@@ -933,7 +943,6 @@ export interface SideBySideBlock {
           id?: string | null;
         }[]
       | null;
-    media?: (number | null) | Media;
   };
   id?: string | null;
   blockName?: string | null;
@@ -1402,8 +1411,17 @@ export interface SideBySideBlockSelect<T extends boolean = true> {
     | T
     | {
         type?: T;
-        title?: T;
-        richText?: T;
+        textside?:
+          | T
+          | {
+              title?: T;
+              richText?: T;
+            };
+        imageside?:
+          | T
+          | {
+              media?: T;
+            };
         links?:
           | T
           | {
@@ -1419,14 +1437,23 @@ export interface SideBySideBlockSelect<T extends boolean = true> {
                   };
               id?: T;
             };
-        media?: T;
       };
   rightside?:
     | T
     | {
         type?: T;
         title?: T;
-        richText?: T;
+        textside?:
+          | T
+          | {
+              title?: T;
+              richText?: T;
+            };
+        imageside?:
+          | T
+          | {
+              media?: T;
+            };
         links?:
           | T
           | {
@@ -1442,7 +1469,6 @@ export interface SideBySideBlockSelect<T extends boolean = true> {
                   };
               id?: T;
             };
-        media?: T;
       };
   id?: T;
   blockName?: T;
