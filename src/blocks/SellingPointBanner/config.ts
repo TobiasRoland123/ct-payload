@@ -16,6 +16,7 @@ export const SellingPointBanner: Block = {
       type: 'array',
       name: 'sellingPoints',
       label: 'Selling Points',
+      maxRows: 5,
       fields: [
         { type: 'text', name: 'sellingPointTitle', label: 'Selling Point Title', required: true },
         {
