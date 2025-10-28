@@ -1,19 +1,9 @@
 import React from 'react'
-import { SellingPointBannerBlock as SellingPointBannerBlockProps } from '@/payload-types'
+import { SellingPointsBlock as SellingPointsBlockProps } from '@/payload-types'
 import RichText from '@/components/RichText'
-
-import { CMSLink } from '@/components/Link'
-import { Media } from '@/components/Media'
 import { Sprite } from '@/components/Sprite'
 
-export const SellingPointBannerBlock: React.FC<SellingPointBannerBlockProps> = ({
-  sellingPoints,
-
-  title,
-}) => {
-  console.log('sellingPoints', sellingPoints)
-  console.log('title', title)
-
+export const SellingPointsBlock: React.FC<SellingPointsBlockProps> = ({ sellingPoints, title }) => {
   return (
     <section className="container py-16 md:py-24">
       <div className=" ">
@@ -33,7 +23,7 @@ export const SellingPointBannerBlock: React.FC<SellingPointBannerBlockProps> = (
               <h3 className="mb-2 text-xl font-semibold text-balance">
                 {sellingPoint.sellingPointTitle}
               </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground text-pretty">
+              <div className="text-sm leading-relaxed text-muted-foreground text-pretty">
                 {sellingPoint.sellingPointDescription && (
                   <RichText
                     className="mb-0"
@@ -42,7 +32,7 @@ export const SellingPointBannerBlock: React.FC<SellingPointBannerBlockProps> = (
                     data={sellingPoint.sellingPointDescription}
                   />
                 )}
-              </p>
+              </div>
             </div>
           ))}
         </div>

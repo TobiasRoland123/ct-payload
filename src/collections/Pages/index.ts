@@ -22,8 +22,9 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { Faq } from '@/blocks/Faq/config'
 import { Services } from '@/blocks/Services/config'
-import { SellingPointBanner } from '@/blocks/SellingPointBanner/config'
+
 import { SideBySide } from '@/blocks/SideBySide/Config'
+import { SellingPoints } from '@/blocks/SellingPoints/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -87,7 +88,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 Faq,
                 Services,
-                SellingPointBanner,
+                SellingPoints,
                 SideBySide,
               ],
               required: true,

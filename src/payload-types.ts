@@ -199,7 +199,7 @@ export interface Page {
     | FormBlock
     | FaqBlock
     | ServicesBlock
-    | SellingPointBannerBlock
+    | SellingPointsBlock
     | SideBySideBlock
   )[];
   meta?: {
@@ -793,9 +793,9 @@ export interface ServicesBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "SellingPointBannerBlock".
+ * via the `definition` "SellingPointsBlock".
  */
-export interface SellingPointBannerBlock {
+export interface SellingPointsBlock {
   title: string;
   sellingPoints?:
     | {
@@ -821,7 +821,7 @@ export interface SellingPointBannerBlock {
     | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'sellingpointbanner';
+  blockType: 'sellingpoints';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1223,7 +1223,7 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         faq?: T | FaqBlockSelect<T>;
         services?: T | ServicesBlockSelect<T>;
-        sellingpointbanner?: T | SellingPointBannerBlockSelect<T>;
+        sellingpoints?: T | SellingPointsBlockSelect<T>;
         sidebyside?: T | SideBySideBlockSelect<T>;
       };
   meta?:
@@ -1359,9 +1359,9 @@ export interface ServicesBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "SellingPointBannerBlock_select".
+ * via the `definition` "SellingPointsBlock_select".
  */
-export interface SellingPointBannerBlockSelect<T extends boolean = true> {
+export interface SellingPointsBlockSelect<T extends boolean = true> {
   title?: T;
   sellingPoints?:
     | T

@@ -9,7 +9,7 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { FaqBlock } from '@/blocks/Faq/component'
 import { ServicesBlock } from '@/blocks/Services/Component'
-import { SellingPointBannerBlock } from '@/blocks/SellingPointBanner/Component'
+import { SellingPointsBlock } from '@/blocks/SellingPoints/Component'
 import { SideBySideBlock } from '@/blocks/SideBySide/Component'
 
 const blockComponents = {
@@ -20,7 +20,7 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   faq: FaqBlock,
   services: ServicesBlock,
-  sellingpointbanner: SellingPointBannerBlock,
+  sellingpoints: SellingPointsBlock,
   sidebyside: SideBySideBlock,
 }
 

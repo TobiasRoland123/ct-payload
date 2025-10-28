@@ -7,9 +7,9 @@ import {
 } from '@payloadcms/richtext-lexical'
 import { SpriteTypes } from '@/components/Sprite'
 
-export const SellingPointBanner: Block = {
-  slug: 'sellingpointbanner',
-  interfaceName: 'SellingPointBannerBlock',
+export const SellingPoints: Block = {
+  slug: 'sellingpoints',
+  interfaceName: 'SellingPointsBlock',
   fields: [
     { type: 'text', name: 'title', label: 'Title', required: true },
     {
@@ -41,7 +41,7 @@ export const SellingPointBanner: Block = {
     },
   ],
   labels: {
-    plural: 'Selling Point Banners',
-    singular: 'Selling Point Banner',
+    plural: 'Selling Points',
+    singular: 'Selling Point',
   },
 }
