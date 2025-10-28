@@ -189,7 +189,12 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
-    media?: (number | null) | Media;
+    heroImages?:
+      | {
+          media?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
   };
   layout: (
     | CallToActionBlock
@@ -1211,7 +1216,12 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               id?: T;
             };
-        media?: T;
+        heroImages?:
+          | T
+          | {
+              media?: T;
+              id?: T;
+            };
       };
   layout?:
     | T
