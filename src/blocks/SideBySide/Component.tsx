@@ -11,18 +11,17 @@ export const SideBySideBlock: React.FC<SideBySideBlockProps> = ({
 }) => {
   return (
     <section className={'container '}>
-      <h2>{heading}</h2>
+      <h2 className={'text-6xl'}>{heading}</h2>
       <div className={'md:grid grid-cols-2 gap-8'}>
         <div>
           {leftside && leftside.type === 'imageside' && leftside?.imageside?.media && (
             <SideBySideImage resource={leftside.imageside.media} />
           )}
           {leftside && leftside.type === 'textside' && (
-            // <div>im a left text side</div>
             <div>
-              <div>{leftside?.textside?.title}</div>
+              <p className={'text-3xl mt-8'}>{leftside?.textside?.title}</p>
               {leftside?.textside?.richText && (
-                <div>
+                <div className={'mt-4'}>
                   <RichText
                     className="mb-0"
                     data={leftside.textside.richText}
