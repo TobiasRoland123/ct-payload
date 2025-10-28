@@ -53,6 +53,14 @@ export const hero: Field = {
       }),
       label: false,
     },
+    {
+      name: 'media',
+      type: 'upload',
+      admin: {
+        condition: (_, { type } = {}) => ['mediumImpact'].includes(type),
+      },
+      relationTo: 'media',
+    },
     linkGroup({
       overrides: {
         maxRows: 2,
@@ -64,7 +72,7 @@ export const hero: Field = {
       label: 'Hero Images',
       minRows: 1,
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        condition: (_, { type } = {}) => ['highImpact'].includes(type),
       },
       fields: [
         {
