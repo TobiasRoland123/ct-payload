@@ -26,7 +26,12 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({ title, accordions }) => {
                   <AccordionTrigger>{item.question}</AccordionTrigger>
                   <AccordionContent className="flex flex-col gap-4 text-balance">
                     {item.answer && (
-                      <RichText className="mb-0" data={item.answer} enableGutter={false} />
+                      <RichText
+                        className="mb-0"
+                        enableProse={false}
+                        enableGutter={true}
+                        data={item.answer}
+                      />
                     )}
                   </AccordionContent>
                 </AccordionItem>

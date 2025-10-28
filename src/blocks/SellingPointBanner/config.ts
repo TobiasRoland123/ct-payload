@@ -5,7 +5,7 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
-import { linkGroup } from '@/fields/linkGroup'
+import { SpriteTypes } from '@/components/Sprite'
 
 export const SellingPointBanner: Block = {
   slug: 'sellingpointbanner',
@@ -13,27 +13,30 @@ export const SellingPointBanner: Block = {
   fields: [
     { type: 'text', name: 'title', label: 'Title', required: true },
     {
-      name: 'sellingpoints',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
+      type: 'array',
+      name: 'sellingPoints',
+      label: 'Selling Points',
+      fields: [
+        { type: 'text', name: 'sellingPointTitle', label: 'Selling Point Title', required: true },
+        {
+          type: 'richText',
+          name: 'sellingPointDescription',
+          label: 'Selling Point Description',
+          editor: lexicalEditor({
+            features: ({ rootFeatures }) => {
+              return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
+            },
+          }),
+          required: true,
         },
-      }),
-      label: false,
-    },
-    linkGroup({
-      appearances: ['default', 'outline'],
-      overrides: {
-        maxRows: 1,
-      },
-    }),
-
-    {
-      name: 'media',
-      type: 'upload',
-      relationTo: 'media',
-      required: true,
+        {
+          type: 'select',
+          name: 'sellingPointIcon',
+          label: 'Selling Point Icon',
+          dbName: 'sellingPointIcon',
+          options: SpriteTypes,
+        },
+      ],
     },
   ],
   labels: {

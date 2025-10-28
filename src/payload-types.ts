@@ -797,46 +797,28 @@ export interface ServicesBlock {
  */
 export interface SellingPointBannerBlock {
   title: string;
-  sellingpoints?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  links?:
+  sellingPoints?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
+        sellingPointTitle: string;
+        sellingPointDescription: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
         };
+        sellingPointIcon?: ('player' | 'enemy' | 'coin' | 'heart' | 'star') | null;
         id?: string | null;
       }[]
     | null;
-  media: number | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'sellingpointbanner';
@@ -1381,23 +1363,14 @@ export interface ServicesBlockSelect<T extends boolean = true> {
  */
 export interface SellingPointBannerBlockSelect<T extends boolean = true> {
   title?: T;
-  sellingpoints?: T;
-  links?:
+  sellingPoints?:
     | T
     | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
+        sellingPointTitle?: T;
+        sellingPointDescription?: T;
+        sellingPointIcon?: T;
         id?: T;
       };
-  media?: T;
   id?: T;
   blockName?: T;
 }

@@ -4,28 +4,49 @@ import RichText from '@/components/RichText'
 
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
+import { Sprite } from '@/components/Sprite'
 
 export const SellingPointBannerBlock: React.FC<SellingPointBannerBlockProps> = ({
-  sellingpoints,
-  links,
+  sellingPoints,
+
   title,
-  media,
 }) => {
-  console.log('links:', links)
+  console.log('sellingPoints', sellingPoints)
+  console.log('title', title)
+
   return (
-    <article className={'md:grid grid-cols-2 gap-8 container'}>
-      <div className={'relative aspect-auto h-full'}>
-        <Media resource={media} imgClassName={'object-cover overflow-hidden'} fill />
-      </div>
-      <div>
-        <h2 className={'text-3xl'}>{title}</h2>
-        {sellingpoints && <RichText data={sellingpoints} className={'mt-4'} enableGutter={false} />}
-        <div className={'mt-4'}>
-          {(links || []).map(({ link }, i) => {
-            return <CMSLink key={i} size="lg" {...link} />
-          })}
+    <section className="w-full py-16 md:py-24">
+      <div className="container px-4 md:px-6">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {sellingPoints?.map((sellingPoint, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/50 hover:shadow-lg"
+            >
+              <div className="mb-4 flex items-start justify-between">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-primary-foreground transition-transform group-hover:scale-110">
+                  {sellingPoint.sellingPointIcon && (
+                    <Sprite sprite={sellingPoint.sellingPointIcon} size={56} />
+                  )}
+                </div>
+              </div>
+              <h3 className="mb-2 text-xl font-semibold text-balance">
+                {sellingPoint.sellingPointTitle}
+              </h3>
+              <p className="text-sm leading-relaxed text-muted-foreground text-pretty">
+                {sellingPoint.sellingPointDescription && (
+                  <RichText
+                    className="mb-0"
+                    enableProse={false}
+                    enableGutter={true}
+                    data={sellingPoint.sellingPointDescription}
+                  />
+                )}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
-    </article>
+    </section>
   )
 }
