@@ -25,6 +25,7 @@ import { Services } from '@/blocks/Services/config'
 
 import { SideBySide } from '@/blocks/SideBySide/Config'
 import { SellingPoints } from '@/blocks/SellingPoints/config'
+import { Video } from '@/blocks/Video/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -90,6 +91,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Services,
                 SellingPoints,
                 SideBySide,
+                Video,
               ],
               required: true,
               admin: {

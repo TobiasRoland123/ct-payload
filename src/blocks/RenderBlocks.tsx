@@ -11,6 +11,7 @@ import { FaqBlock } from '@/blocks/Faq/component'
 import { ServicesBlock } from '@/blocks/Services/Component'
 import { SellingPointsBlock } from '@/blocks/SellingPoints/Component'
 import { SideBySideBlock } from '@/blocks/SideBySide/Component'
+import { VideoBlock } from '@/blocks/Video/component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -22,6 +23,7 @@ const blockComponents = {
   services: ServicesBlock,
   sellingpoints: SellingPointsBlock,
   sidebyside: SideBySideBlock,
+  video: VideoBlock,
 }
 
 export const RenderBlocks: React.FC<{

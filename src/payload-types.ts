@@ -207,6 +207,7 @@ export interface Page {
     | ServicesBlock
     | SellingPointsBlock
     | SideBySideBlock
+    | VideoBlock
   )[];
   meta?: {
     title?: string | null;
@@ -938,6 +939,17 @@ export interface SideBySideBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock".
+ */
+export interface VideoBlock {
+  media: number | Media;
+  controls?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'video';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1237,6 +1249,7 @@ export interface PagesSelect<T extends boolean = true> {
         services?: T | ServicesBlockSelect<T>;
         sellingpoints?: T | SellingPointsBlockSelect<T>;
         sidebyside?: T | SideBySideBlockSelect<T>;
+        video?: T | VideoBlockSelect<T>;
       };
   meta?:
     | T
@@ -1455,6 +1468,16 @@ export interface SideBySideBlockSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock_select".
+ */
+export interface VideoBlockSelect<T extends boolean = true> {
+  media?: T;
+  controls?: T;
   id?: T;
   blockName?: T;
 }
